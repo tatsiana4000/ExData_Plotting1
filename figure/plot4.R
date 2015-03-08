@@ -3,7 +3,7 @@
 #############################################################
 
 #read data
-file<-"./household_power_consumption.txt"
+file<-"household_power_consumption.txt"
 data_consumption <- read.table(file, header = TRUE,sep =";", 
                                colClasses = c("factor","factor","numeric","numeric","numeric","numeric"),
                                na.strings="?")
@@ -14,13 +14,16 @@ sub2<-data_consumption [data_consumption$Date=='2/2/2007',]
 data<-rbind(sub1,sub2)
 
 #############################################################
-#plot graph
-png(file="plot4.png",width = 480, height = 480)
-
 #convert Date and Time into date format
 Date_x<-strptime(paste(data$Date, data$Time, sep=" "),
                  '%d/%m/%Y %H:%M:%S')
-par(mfcol=c(2,2))
+
+#############################################################
+#plot graph
+png(file="plot4.png",width = 480, height = 480)
+
+
+par(mfcol=c(2,2),bg=NA)
 
 #----------------------------------------------------------
 #plot nr.1
